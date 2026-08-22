@@ -1,15 +1,7 @@
-# Arbitrary keyword arguments example using **kwargs
+def menu(item, quan, **restaurant):
+    restaurant['Item'] = item
+    restaurant['Quantity'] = quan
+    return restaurant
 
-def build_profile(first, last, **user_info):
-    user_info["first_name"] = first
-    user_info["last_name"] = last
-    return user_info
-
-user_profile = build_profile(
-    "albert",
-    "einstein",
-    location="princeton",
-    field="physics",
-)
-
-print(user_profile)
+restaurant = menu('soup', '1', Location='seattle', Zipcode='98109')
+print(restaurant)

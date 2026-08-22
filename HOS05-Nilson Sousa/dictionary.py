@@ -1,18 +1,15 @@
-# Dictionary example: access, update, add, and delete key-value pairs
+y_dict = {"name": "abc", "age": 30}
 
-student = {"name": "Alice", "age": 21, "major": "Computer Science"}
+print(my_dict)
 
-# Accessing a value
-print("Name:", student["name"])
+# Updating
+my_dict["age"] = 31
+print("Updated:", my_dict)
 
-# Updating a value
-student["age"] = 22
-print("Updated age:", student["age"])
+# Adding
+my_dict["city"] = "New York"
+print("After adding:", my_dict)
 
-# Adding a new key-value pair
-student["gpa"] = 3.8
-print("After adding gpa:", student)
-
-# Deleting a key-value pair
-del student["major"]
-print("After deleting major:", student)
+# Deleting
+del my_dict["age"]
+print("After deleting 'age':", my_dict)

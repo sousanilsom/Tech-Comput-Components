@@ -1,7 +1,11 @@
-# A simple function that prints a range of numbers
+def numbers(limit):
+    i = 0
+    numbers = []
 
-def print_numbers(start, end):
-    for number in range(start, end + 1):
-        print(number)
+    while i < limit:
+        numbers.append(i)
+        i = i + 1
+    return numbers
 
-print_numbers(1, 5)
+user_limit = int(input("Give a limit: "))
+print(numbers(user_limit))

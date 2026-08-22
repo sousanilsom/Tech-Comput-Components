@@ -1,10 +1,11 @@
-# Using the set() constructor and joining two sets
+# joining two sets
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = set1.union(set2)
+print(set3)
+set1.update(set2)
+print(set1)
 
-fruits_a = set(["apple", "banana", "cherry"])
-fruits_b = {"cherry", "date", "elderberry"}
-
-combined_union = fruits_a.union(fruits_b)
-print("Union:", combined_union)
-
-fruits_a.update(fruits_b)
-print("After update:", fruits_a)
+# constructor
+thisset = set(("apple", "banana", "cherry")) # note the double round-brackets
+print(thisset)
