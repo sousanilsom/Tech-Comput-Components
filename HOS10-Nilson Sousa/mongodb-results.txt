@@ -1,0 +1,315 @@
+
+===== Step 1 show dbs =====
+[
+  'admin',
+  'config',
+  'local'
+]
+
+===== Step 3 db =====
+CS628Practice
+
+===== Step 4 createCollection =====
+{
+  ok: 1
+}
+
+===== Step 5 insertMany =====
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6aa56fb1f76851bdd1173374'),
+    '1': ObjectId('6aa56fb1f76851bdd1173375'),
+    '2': ObjectId('6aa56fb1f76851bdd1173376'),
+    '3': ObjectId('6aa56fb1f76851bdd1173377'),
+    '4': ObjectId('6aa56fb1f76851bdd1173378')
+  }
+}
+
+===== Step 6 find all =====
+[
+  {
+    _id: ObjectId('6aa56fb1f76851bdd1173374'),
+    name: 'user1',
+    age: 25,
+    email: 'user1@cityuniversity.edu'
+  },
+  {
+    _id: ObjectId('6aa56fb1f76851bdd1173375'),
+    name: 'user2',
+    age: 32,
+    email: 'user2@cityuniversity.edu'
+  },
+  {
+    _id: ObjectId('6aa56fb1f76851bdd1173376'),
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    _id: ObjectId('6aa56fb1f76851bdd1173377'),
+    name: 'user4',
+    age: 41,
+    email: 'user4@cityuniversity.edu'
+  },
+  {
+    _id: ObjectId('6aa56fb1f76851bdd1173378'),
+    name: 'CityUser5',
+    age: 22,
+    email: 'cityuser5@cityuniversity.edu'
+  }
+]
+
+===== Step 7 age lt 30 =====
+[
+  {
+    name: 'user1',
+    age: 25,
+    email: 'user1@cityuniversity.edu'
+  },
+  {
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    name: 'CityUser5',
+    age: 22,
+    email: 'cityuser5@cityuniversity.edu'
+  }
+]
+
+===== Step 8 updateOne =====
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+===== Step 9 verify update =====
+[
+  {
+    name: 'user1',
+    age: 31,
+    email: 'user1@cityuniversity.edu'
+  }
+]
+
+===== Step 10 deleteOne =====
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+
+===== Step 11 verify delete =====
+[
+  {
+    name: 'user1',
+    age: 31,
+    email: 'user1@cityuniversity.edu'
+  },
+  {
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    name: 'user4',
+    age: 41,
+    email: 'user4@cityuniversity.edu'
+  },
+  {
+    name: 'CityUser5',
+    age: 22,
+    email: 'cityuser5@cityuniversity.edu'
+  }
+]
+
+===== Step 12 avg age =====
+[
+  {
+    _id: null,
+    averageAge: 30.5
+  }
+]
+
+===== Step 13 createIndex email =====
+email_1
+
+===== Step 14a text index =====
+name_text_email_text
+
+===== Step 14b text search user1 =====
+[
+  {
+    name: 'user1',
+    age: 31,
+    email: 'user1@cityuniversity.edu'
+  }
+]
+
+===== Step 15 sort age desc =====
+[
+  {
+    name: 'user4',
+    age: 41,
+    email: 'user4@cityuniversity.edu'
+  },
+  {
+    name: 'user1',
+    age: 31,
+    email: 'user1@cityuniversity.edu'
+  },
+  {
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    name: 'CityUser5',
+    age: 22,
+    email: 'cityuser5@cityuniversity.edu'
+  }
+]
+
+===== Step 16 limit 2 skip 1 =====
+[
+  {
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    name: 'user4',
+    age: 41,
+    email: 'user4@cityuniversity.edu'
+  }
+]
+
+===== Step 17 group count by age =====
+[
+  {
+    _id: 22,
+    count: 1
+  },
+  {
+    _id: 28,
+    count: 1
+  },
+  {
+    _id: 31,
+    count: 1
+  },
+  {
+    _id: 41,
+    count: 1
+  }
+]
+
+===== Step 18 max min age =====
+[
+  {
+    _id: null,
+    oldest: 41,
+    youngest: 22
+  }
+]
+
+===== Step 19a places insertMany =====
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6aa56fb1f76851bdd1173379'),
+    '1': ObjectId('6aa56fb1f76851bdd117337a'),
+    '2': ObjectId('6aa56fb1f76851bdd117337b'),
+    '3': ObjectId('6aa56fb1f76851bdd117337c')
+  }
+}
+
+===== Step 19b 2dsphere index =====
+location_2dsphere
+
+===== Step 20a geoWithin centerSphere 20km =====
+[
+  {
+    name: 'Space Needle'
+  },
+  {
+    name: 'Pike Place Market'
+  },
+  {
+    name: 'CityU Seattle'
+  }
+]
+
+===== Step 20b near 20000m =====
+[
+  {
+    name: 'Pike Place Market'
+  },
+  {
+    name: 'Space Needle'
+  },
+  {
+    name: 'CityU Seattle'
+  }
+]
+
+===== Step 21 or regex =====
+[
+  {
+    name: 'user1',
+    age: 31,
+    email: 'user1@cityuniversity.edu'
+  },
+  {
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  },
+  {
+    name: 'user4',
+    age: 41,
+    email: 'user4@cityuniversity.edu'
+  },
+  {
+    name: 'CityUser5',
+    age: 22,
+    email: 'cityuser5@cityuniversity.edu'
+  }
+]
+
+===== Step 22 total age =====
+[
+  {
+    _id: null,
+    totalAge: 122
+  }
+]
+
+===== Step 23a show collections =====
+[
+  'places',
+  'users'
+]
+
+===== Step 23b drop users =====
+true
+
+===== Step 23c drop places =====
+true
+
+===== Step 23d show collections =====
+[]
+
+===== Step 16 playground =====
+[
+  {
+    _id: ObjectId('6aa57efcb875cc0a4c9f58ee'),
+    name: 'user3',
+    age: 28,
+    email: 'user3@cityuniversity.edu'
+  }
+]
